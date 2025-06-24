@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat with TS</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>Talk with TS</h1>
+  <center><div class="chat-container">
+
+
+    <div class="chat-box" id="chat-box"></div>
+
+    <div class="input-container">
+      <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+</center>
+  <script>
+  async function sendMessage() {
+    const input = document.getElementById("user-input");
+    const chatBox = document.getElementById("chat-box");
+    const message = input.value;
+    if (!message) return;
+
+    // Add user message with name
+    chatBox.innerHTML += `
+      <div class="message user">
+        <div class="sender-name">Manibharathi</div>
+        <div class="bubble">${message}</div>
+      </div>`;
+
+    input.value = '';
+
+    const res = await fetch('/chat', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({message})
+    });
+
+    const data = await res.json();
+
+    // Add bot reply with name
+    chatBox.innerHTML += `
+      <div class="message bot">
+        <div class="sender-name">TS</div>
+        <div class="bubble">${data.response}</div>
+      </div>`;
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+</script>
+
+</body>
+</html>

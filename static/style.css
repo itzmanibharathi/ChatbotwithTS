@@ -1,0 +1,102 @@
+body {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    padding: 30px 0;
+    font-size: 3em;
+    color: #66fcf1; /* Light blue that contrasts well with your background */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.chat-container {
+  width: 900px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+}
+.message {
+  margin: 10px;
+  max-width: 80%;
+}
+
+.message.user {
+  text-align: right;
+  margin-left: auto;
+}
+
+.message.bot {
+  text-align: left;
+  margin-right: auto;
+}
+
+.sender-name {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 2px;
+  font-weight: bold;
+}
+ 
+.bubble {
+  background-color: rgb(117, 243, 0);
+  color: #222; /* ✅ DARK TEXT */
+  display: inline-block;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 15px;
+}
+
+.message.bot .bubble {
+   background-color: rgb(255, 255, 255);
+  color: #222; /* ✅ DARK TEXT */
+  border-radius: 12px;
+}
+
+
+.chat-box {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  max-height: 500px;
+}
+
+
+.input-container {
+  display: flex;
+  padding: 10px;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.input-container input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  margin-right: 10px;
+  outline: none;
+}
+
+.input-container button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #1abc9c;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.input-container button:hover {
+  background-color: #16a085;
+}
